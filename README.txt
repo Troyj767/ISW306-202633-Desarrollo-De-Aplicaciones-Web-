@@ -12,7 +12,8 @@ Este es un proyecto colaborativo del Grupo #4 para desarrollar una página web
 funcional como parte del curso ISW306-202633 de Desarrollo de Aplicaciones Web.
 
 ================================================================================
-TECNOLOGÍAS UTILIZADAS
+TECNOLOGÍAS UTILIZADAS DE MOMENTO (IRAN CAMBIANDO DEPENDIENDO LOS CAMBIOS
+REALIZADOS EN EL CODIGO)
 ================================================================================
 
 - HTML (74.2%)
