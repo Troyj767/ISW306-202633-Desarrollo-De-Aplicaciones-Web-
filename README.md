@@ -17,6 +17,7 @@ Tienda en línea desarrollada como proyecto académico a lo largo del trimestre.
 
 ## 📋 Descripción
 
+**NovaShop** es un proyecto colaborativo del Grupo 4 para el curso **ISW306-202633 — Desarrollo de Aplicaciones Web**. Es una tienda en línea que empezó como un esqueleto visual estático y que irá ganando funcionalidad real fase a fase, hasta terminar desplegada con un framework completo al final del trimestre.
 **NovaShop** es un proyecto colaborativo del Grupo 4 para el curso **ISW306-202633 — Desarrollo de Aplicaciones Web**. Es una tienda en línea que empezó como un esqueleto visual estático y que ir[...]
 
 ## 🗺️ Fases del proyecto
@@ -98,4 +99,5 @@ git push origin fase-1-maquetacion
 
 *Última actualización: 24 de agosto de 2026*
 
+</div>
 </div>
