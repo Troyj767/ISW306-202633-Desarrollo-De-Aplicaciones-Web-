@@ -9,32 +9,52 @@
   <!-- Método CSS interno: ajustes propios de esta página, no aplican a las demás -->
   <style>
     .historia {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-      align-items: center;
-    }
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+  padding: 1.5rem;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+}
 
-    .valores-lista {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 1rem;
-      list-style: none;
-    }
+.historia img {
+  width: 100%;
+  border-radius: 10px;
+}
 
-    .valores-lista li {
-      background: #fff;
-      border-left: 4px solid var(--color-secundario);
-      padding: 1rem;
-      border-radius: 6px;
-      box-shadow: 0 2px 6px rgba(29, 53, 87, 0.1);
-    }
+.valores-lista {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+}
 
-    @media (max-width: 700px) {
-      .historia {
-        grid-template-columns: 1fr;
-      }
-    }
+.valores-lista li {
+  background: #ffffff;
+  border-left: 4px solid var(--color-secundario);
+  padding: 1rem;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(29, 53, 87, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.valores-lista li:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 12px rgba(29, 53, 87, 0.2);
+}
+
+@media (max-width: 700px) {
+  .historia {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+
+  .valores-lista {
+    grid-template-columns: 1fr;
+  }
+}
   </style>
 </head>
 
