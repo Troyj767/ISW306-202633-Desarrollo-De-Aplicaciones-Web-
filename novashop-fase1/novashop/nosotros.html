@@ -37,6 +37,7 @@
     }
   </style>
 </head>
+
 <body>
 
   <header id="site-header">
@@ -44,10 +45,13 @@
       <img src="img/logo.png" alt="Logotipo de NovaShop">
       <span>NovaShop</span>
     </div>
+
     <nav>
       <ul class="nav-menu">
         <li><a href="index.html">Inicio</a></li>
-        <li><a href="nosotros.html" aria-current="page">Sobre nosotros</a></li>
+        <li>
+          <a href="nosotros.html" aria-current="page">Sobre nosotros</a>
+        </li>
         <li><a href="contacto.html">Contacto</a></li>
       </ul>
     </nav>
@@ -55,59 +59,179 @@
 
   <main>
 
+    <!-- Historia de NovaShop -->
     <section class="section historia">
       <div>
         <h1>Nuestra historia</h1>
-        <p>NovaShop nació como proyecto académico del Grupo 4 con la idea de crear
-          una tienda en línea sencilla, accesible y con una identidad visual clara.
-          A lo largo del trimestre iremos agregando funcionalidad real: interactividad
-          con JavaScript, conexión a una base de datos y despliegue con un framework.</p>
+
+        <p>
+          NovaShop nació como proyecto académico del Grupo 4 con la idea
+          de crear una tienda en línea sencilla, accesible y con una
+          identidad visual clara. A lo largo del trimestre iremos
+          agregando funcionalidad real: interactividad con JavaScript,
+          conexión a una base de datos y despliegue con un framework.
+        </p>
       </div>
-      <img src="img/sobre-nosotros.jpg" alt="Equipo de trabajo de NovaShop">
+
+      <img
+        src="img/sobre-nosotros.jpg"
+        alt="Equipo de trabajo de NovaShop"
+      >
     </section>
 
+
+    <!-- Valores de la empresa -->
     <section class="section">
       <h2 class="section-title">Nuestros valores</h2>
+
       <ul class="valores-lista">
-        <li><strong>Calidad</strong><br>Productos seleccionados y verificados.</li>
-        <li><strong>Cercanía</strong><br>Atención directa a cada cliente.</li>
-        <li><strong>Transparencia</strong><br>Precios claros, sin letra pequeña.</li>
-        <li><strong>Innovación</strong><br>Mejoras constantes en cada fase del proyecto.</li>
+        <li>
+          <strong>Calidad</strong><br>
+          Productos seleccionados y verificados.
+        </li>
+
+        <li>
+          <strong>Cercanía</strong><br>
+          Atención directa a cada cliente.
+        </li>
+
+        <li>
+          <strong>Transparencia</strong><br>
+          Precios claros, sin letra pequeña.
+        </li>
+
+        <li>
+          <strong>Innovación</strong><br>
+          Mejoras constantes en cada fase del proyecto.
+        </li>
       </ul>
     </section>
 
+
+    <!-- Categorías de productos -->
     <section class="section">
       <h2 class="section-title">Categorías de productos</h2>
+
       <table>
         <thead>
           <tr>
             <th>Categoría</th>
             <th>Descripción</th>
-            <th>Ejemplo</th>
+            <th>Ejemplos de productos</th>
+            <th>Dirigido a</th>
           </tr>
         </thead>
+
         <tbody>
+
           <tr>
-            <td>Tecnología</td>
-            <td>Accesorios electrónicos de uso diario</td>
-            <td>Audífonos, smartwatch</td>
+            <td><strong>Tecnología</strong></td>
+            <td>
+              Productos tecnológicos y accesorios diseñados para
+              facilitar las actividades diarias y mejorar la
+              conectividad.
+            </td>
+            <td>
+              Audífonos, smartwatch, cargadores
+            </td>
+            <td>
+              Usuarios tecnológicos
+            </td>
           </tr>
+
           <tr>
-            <td>Hogar y oficina</td>
-            <td>Artículos para el espacio de trabajo</td>
-            <td>Lámpara LED</td>
+            <td><strong>Hogar y oficina</strong></td>
+            <td>
+              Artículos prácticos que ayudan a mantener espacios
+              cómodos, organizados y adecuados para estudiar o trabajar.
+            </td>
+            <td>
+              Lámparas LED, organizadores, soportes
+            </td>
+            <td>
+              Hogares y estudiantes
+            </td>
           </tr>
+
           <tr>
-            <td>Movilidad</td>
-            <td>Artículos para llevar tus cosas contigo</td>
-            <td>Mochila para laptop</td>
+            <td><strong>Movilidad</strong></td>
+            <td>
+              Productos pensados para transportar dispositivos y
+              objetos personales de manera cómoda y segura.
+            </td>
+            <td>
+              Mochilas, bolsos, fundas para laptop
+            </td>
+            <td>
+              Estudiantes y profesionales
+            </td>
           </tr>
+
+          <tr>
+            <td><strong>Accesorios</strong></td>
+            <td>
+              Complementos que permiten mejorar, proteger o
+              personalizar diferentes dispositivos y productos.
+            </td>
+            <td>
+              Cables, adaptadores, soportes
+            </td>
+            <td>
+              Todo tipo de usuarios
+            </td>
+          </tr>
+
+          <tr>
+            <td><strong>Electrónica</strong></td>
+            <td>
+              Equipos electrónicos destinados al entretenimiento,
+              comunicación y uso práctico en el hogar.
+            </td>
+            <td>
+              Parlantes, cámaras, dispositivos USB
+            </td>
+            <td>
+              Hogares y usuarios tecnológicos
+            </td>
+          </tr>
+
+          <tr>
+            <td><strong>Gaming</strong></td>
+            <td>
+              Accesorios y dispositivos destinados a mejorar la
+              experiencia de los usuarios aficionados a los videojuegos.
+            </td>
+            <td>
+              Mouse, teclados, controles
+            </td>
+            <td>
+              Gamers
+            </td>
+          </tr>
+
+          <tr>
+            <td><strong>Ofertas</strong></td>
+            <td>
+              Selección de productos disponibles con promociones y
+              precios especiales para nuestros clientes.
+            </td>
+            <td>
+              Descuentos, promociones y combos
+            </td>
+            <td>
+              Todos los clientes
+            </td>
+          </tr>
+
         </tbody>
       </table>
     </section>
 
+
+    <!-- Horario de atención -->
     <section class="section">
       <h2 class="section-title">Horario de atención</h2>
+
       <table>
         <thead>
           <tr>
@@ -115,20 +239,40 @@
             <th>Horario</th>
           </tr>
         </thead>
+
         <tbody>
-          <tr><td>Lunes a viernes</td><td>8:00 a.m. – 6:00 p.m.</td></tr>
-          <tr><td>Sábados</td><td>9:00 a.m. – 2:00 p.m.</td></tr>
-          <tr><td>Domingos</td><td>Cerrado</td></tr>
+          <tr>
+            <td>Lunes a viernes</td>
+            <td>8:00 a.m. – 6:00 p.m.</td>
+          </tr>
+
+          <tr>
+            <td>Sábados</td>
+            <td>9:00 a.m. – 2:00 p.m.</td>
+          </tr>
+
+          <tr>
+            <td>Domingos</td>
+            <td>Cerrado</td>
+          </tr>
         </tbody>
       </table>
     </section>
 
   </main>
 
+
   <footer id="site-footer">
-    <p>&copy; 2026 NovaShop — Proyecto académico, Grupo 4.</p>
-    <p><a href="index.html">Inicio</a> · <a href="contacto.html">Contacto</a></p>
+    <p>
+      &copy; 2026 NovaShop — Proyecto académico, Grupo 4.
+    </p>
+
+    <p>
+      <a href="index.html">Inicio</a> ·
+      <a href="contacto.html">Contacto</a>
+    </p>
   </footer>
 
 </body>
 </html>
+```
