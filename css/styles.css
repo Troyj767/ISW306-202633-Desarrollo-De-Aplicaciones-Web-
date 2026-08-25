@@ -178,6 +178,30 @@ main {
   color: var(--color-primario);
 }
 
+/* --- Beneficios (sección "¿Por qué comprar en NovaShop?") --- */
+.beneficios-contenedor {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.beneficio-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 1.2rem;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(29, 53, 87, 0.12);
+}
+
+.beneficio-card img {
+  margin: 0 auto 0.8rem;
+}
+
+.beneficio-card h3 {
+  font-size: 1.05rem;
+  margin-bottom: 0.4rem;
+}
+
 /* --- Formulario maquetado (contacto.html) --- */
 .form-maquetado {
   background: #fff;
