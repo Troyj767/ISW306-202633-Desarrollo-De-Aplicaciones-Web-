@@ -74,9 +74,14 @@ th, td {
 }
 
 #site-header .logo img {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
+  width: auto;
+  height: 40px;
+}
+
+#site-header .logo span {
+  /* El logo ya incluye el nombre "NovaShop" escrito, así que ocultamos
+     el texto duplicado para no repetirlo. */
+  display: none;
 }
 
 #site-header .logo span {
