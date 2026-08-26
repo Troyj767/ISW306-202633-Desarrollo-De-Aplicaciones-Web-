@@ -35,45 +35,27 @@
 
     <section class="section" id="destacados">
       <h2 class="section-title">Productos destacados</h2>
-      <div class="product-grid">
 
-        <article class="product-card">
-          <img src="img/audifono.png" alt="Audífonos inalámbricos NovaShop">
-          <div class="info">
-            <h3>Audífonos inalámbricos</h3>
-            <p>Sonido envolvente y batería de larga duración.</p>
-            <!-- Método CSS en línea: resaltar la etiqueta de oferta -->
-            <p class="price">RD$ 2,450 <span style="color:#e63946; font-weight:700; margin-left:0.4rem;">-20% oferta</span></p>
-          </div>
-        </article>
+      <!-- Fase 2: buscador/filtro dinámico (js/productos.js dibuja las tarjetas aquí abajo) -->
+      <div class="filtro-productos">
+        <div>
+          <label for="filtro-categoria">Categoría</label>
+          <select id="filtro-categoria">
+            <option value="todas">Todas las categorías</option>
+            <option value="tecnologia">Tecnología</option>
+            <option value="hogar-oficina">Hogar y oficina</option>
+            <option value="movilidad">Movilidad</option>
+          </select>
+        </div>
+        <div>
+          <label for="filtro-busqueda">Buscar</label>
+          <input type="text" id="filtro-busqueda" placeholder="Ej. audífonos, lámpara...">
+        </div>
+        <p id="contador-resultados" aria-live="polite"></p>
+      </div>
 
-        <article class="product-card">
-          <img src="img/smartwatch.png" alt="Smartwatch NovaShop">
-          <div class="info">
-            <h3>Smartwatch deportivo</h3>
-            <p>Monitoreo de actividad física y notificaciones.</p>
-            <p class="price">RD$ 4,200</p>
-          </div>
-        </article>
-
-        <article class="product-card">
-          <img src="img/mochila.png" alt="Mochila para laptop NovaShop">
-          <div class="info">
-            <h3>Mochila para laptop</h3>
-            <p>Resistente al agua, con compartimento acolchado.</p>
-            <p class="price">RD$ 1,850</p>
-          </div>
-        </article>
-
-        <article class="product-card">
-          <img src="img/lampara-led.png" alt="Lámpara LED de escritorio NovaShop">
-          <div class="info">
-            <h3>Lámpara LED de escritorio</h3>
-            <p>Tres niveles de brillo, carga USB.</p>
-            <p class="price">RD$ 980</p>
-          </div>
-        </article>
-
+      <div class="product-grid" id="product-grid">
+        <!-- Las tarjetas de producto se generan dinámicamente con JavaScript (js/productos.js) -->
       </div>
     </section>
 
@@ -110,5 +92,7 @@
     <p><a href="nosotros.html">Sobre nosotros</a> · <a href="contacto.html">Contacto</a></p>
   </footer>
 
+  <!-- Fase 2: JavaScript para el buscador/filtro de productos -->
+  <script src="js/productos.js" defer></script>
 </body>
 </html>
