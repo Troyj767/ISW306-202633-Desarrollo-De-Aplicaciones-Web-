@@ -27,22 +27,25 @@
     <section class="section">
       <h1>Contáctanos</h1>
       <!-- Método CSS en línea: nota puntual resaltada -->
-      <p style="color:#e63946; font-weight:600;">Este formulario es solo una maqueta visual — todavía no envía datos (se activará en la Fase 2 del proyecto).</p>
+      <p style="color:#e63946; font-weight:600;">Este formulario ya valida tus datos y te confirma en pantalla — el envío real a un servidor llegará en la Fase 3 del proyecto.</p>
 
-      <form class="form-maquetado" action="#" method="post">
+      <form class="form-maquetado" id="form-contacto" action="#" method="post" novalidate>
         <div>
           <label for="nombre">Nombre completo</label>
           <input type="text" id="nombre" name="nombre" placeholder="Escribe tu nombre">
+          <span class="error-mensaje" id="error-nombre"></span>
         </div>
 
         <div>
           <label for="email">Correo electrónico</label>
           <input type="email" id="email" name="email" placeholder="tucorreo@ejemplo.com">
+          <span class="error-mensaje" id="error-email"></span>
         </div>
 
         <div>
           <label for="telefono">Teléfono</label>
           <input type="tel" id="telefono" name="telefono" placeholder="(809) 000-0000">
+          <span class="error-mensaje" id="error-telefono"></span>
         </div>
 
         <div>
@@ -55,14 +58,17 @@
             <option value="lampara">Lámpara LED de escritorio</option>
             <option value="otro">Otro</option>
           </select>
+          <span class="error-mensaje" id="error-producto"></span>
         </div>
 
         <div>
           <label for="mensaje">Mensaje</label>
           <textarea id="mensaje" name="mensaje" rows="4" placeholder="Cuéntanos qué necesitas"></textarea>
+          <span class="error-mensaje" id="error-mensaje"></span>
         </div>
 
         <button type="submit">Enviar mensaje</button>
+        <p id="form-mensaje-exito" aria-live="polite"></p>
       </form>
     </section>
 
@@ -84,5 +90,7 @@
     <p><a href="index.html">Inicio</a> · <a href="nosotros.html">Sobre nosotros</a></p>
   </footer>
 
+  <!-- Fase 2: JavaScript para validar el formulario -->
+  <script src="js/validacion.js" defer></script>
 </body>
 </html>
