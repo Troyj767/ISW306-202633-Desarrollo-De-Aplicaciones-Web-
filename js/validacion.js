@@ -55,7 +55,7 @@ function validarFormularioContacto(datos) {
   if (!esCampoObligatorioValido(datos.email)) {
     errores.email = 'El correo es obligatorio.';
   } else if (!esEmailValido(datos.email)) {
-    errores.email = 'Escribe un correo válido, ej. nombre@correo.com';
+    errores.email = 'Ese correo no parece válido, revisa que tenga @ y un dominio.';
   }
 
   if (!esCampoObligatorioValido(datos.telefono)) {
