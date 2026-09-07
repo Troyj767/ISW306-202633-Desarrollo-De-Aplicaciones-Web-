@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -7,7 +6,6 @@
   <title>NovaShop — Inicio</title>
   <link rel="stylesheet" href="css/styles.css">
 </head>
-
 <body>
 
   <header id="site-header">
@@ -15,172 +13,103 @@
       <img src="img/logo.png" alt="Logotipo de NovaShop">
       <span>NovaShop</span>
     </div>
-
-```
-<nav>
-  <ul class="nav-menu">
-    <li>
-      <a href="index.html" aria-current="page">Inicio</a>
-    </li>
-    <li>
-      <a href="nosotros.html">Sobre nosotros</a>
-    </li>
-    <li>
-      <a href="contacto.html">Contacto</a>
-    </li>
-  </ul>
-</nav>
-```
-
+    <nav>
+      <ul class="nav-menu">
+        <li><a href="index.html" aria-current="page">Inicio</a></li>
+        <li><a href="nosotros.html">Sobre nosotros</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
   </header>
 
   <main>
 
-```
-<section class="hero">
-  <img src="img/banner.png" alt="Banner principal de NovaShop mostrando productos destacados">
+    <section class="hero">
+      <img src="img/banner.png" alt="Banner principal de NovaShop mostrando productos destacados">
+      <div class="hero-text">
+        <h1>Tecnología y accesorios para tu día a día</h1>
+        <p>Encuentra productos seleccionados con envío rápido y garantía.</p>
+        <a href="contacto.html" class="btn">Contáctanos</a>
+      </div>
+    </section>
 
-  <div class="hero-text">
-    <h1>Tecnología y accesorios para tu día a día</h1>
-    <p>Encuentra productos seleccionados con envío rápido y garantía.</p>
-    <a href="contacto.html" class="btn">Contáctanos</a>
-  </div>
-</section>
+    <section class="section" id="destacados">
+      <h2 class="section-title">Productos destacados</h2>
 
+      <!-- Fase 2: buscador/filtro dinámico (js/productos.js dibuja las tarjetas aquí abajo) -->
+      <div class="filtro-productos">
+        <div>
+          <label for="filtro-categoria">Categoría</label>
+          <select id="filtro-categoria">
+            <option value="todas">Todas las categorías</option>
+            <option value="tecnologia">Tecnología</option>
+            <option value="hogar-oficina">Hogar y oficina</option>
+            <option value="movilidad">Movilidad</option>
+          </select>
+        </div>
+        <div>
+          <label for="filtro-busqueda">Buscar</label>
+          <input type="text" id="filtro-busqueda" placeholder="Ej. audífonos, lámpara...">
+        </div>
+        <p id="contador-resultados" aria-live="polite"></p>
+      </div>
 
-<section class="section" id="destacados">
-
-  <h2 class="section-title">Productos destacados</h2>
-
-  <!-- Buscador y filtro de productos -->
-  <div class="filtro-productos">
-
-    <div>
-      <label for="filtro-categoria">Categoría</label>
-
-      <select id="filtro-categoria">
-        <option value="todas">Todas las categorías</option>
-        <option value="tecnologia">Tecnología</option>
-        <option value="hogar-oficina">Hogar y oficina</option>
-        <option value="movilidad">Movilidad</option>
-      </select>
-    </div>
-
-
-    <div>
-      <label for="filtro-busqueda">Buscar</label>
-
-      <input
-        type="text"
-        id="filtro-busqueda"
-        placeholder="Ej. audífonos, lámpara..."
-      >
-    </div>
-
-    <p id="contador-resultados" aria-live="polite"></p>
-
-  </div>
-
-
-  <!-- Las tarjetas se generan automáticamente con JavaScript -->
-  <div class="product-grid" id="product-grid">
-  </div>
-
-</section>
-
+      <div class="product-grid" id="product-grid">
+        <!-- Tarjetas de ejemplo para que la maqueta se vea completa sin JavaScript.
+             js/productos.js las reemplaza por las tarjetas reales (y filtrables) al cargar la página. -->
+        <article class="product-card">
+          <img src="img/audifono.png" alt="Audífonos inalámbricos NovaShop">
+          <div class="info">
+            <h3>Audífonos inalámbricos</h3>
+            <p>Sonido envolvente y batería de larga duración.</p>
+            <p class="price">RD$ 2,450 <span style="color:#e63946; font-weight:700; margin-left:0.4rem;">-20% oferta</span></p>
+          </div>
+        </article>
+        <article class="product-card">
+          <img src="img/smartwatch.png" alt="Smartwatch NovaShop">
+          <div class="info">
+            <h3>Smartwatch deportivo</h3>
+            <p>Monitoreo de actividad física y notificaciones.</p>
+            <p class="price">RD$ 4,200</p>
+          </div>
+        </article>
+      </div>
+    </section>
 
 <section class="section" id="beneficios">
-
   <h2 class="section-title">¿Por qué comprar en NovaShop?</h2>
-
   <div class="beneficios-contenedor">
-
     <div class="beneficio-card">
-      <img
-        src="img/envio.png"
-        alt="Icono de camión representando envío a todo el país"
-        width="48"
-      >
-
+      <img src="img/envio.png" alt="Icono de camión representando envío a todo el país" width="48">
       <h3>Envíos Rápidos</h3>
-
-      <p>
-        Entregas garantizadas en todo el país en un plazo de 24 a 72 horas.
-      </p>
+      <p>Entregas garantizadas en todo el país en un plazo de 24 a 72 horas.</p>
     </div>
-
-
     <div class="beneficio-card">
-      <img
-        src="img/garantia.png"
-        alt="Icono de escudo representando garantía de 6 meses"
-        width="48"
-      >
-
+      <img src="img/garantia.png" alt="Icono de escudo representando garantía de 6 meses" width="48">
       <h3>Garantía Asegurada</h3>
-
-      <p>
-        Cobertura y garantía directa de 6 meses en todos nuestros productos.
-      </p>
+      <p>Cobertura y garantía directa de 6 meses en todos nuestros productos.</p>
     </div>
-
-
     <div class="beneficio-card">
-      <img
-        src="img/soporte.png"
-        alt="Icono de soporte y atención al cliente"
-        width="48"
-      >
-
+      <img src="img/soporte.png" alt="Icono de soporte y atención al cliente" width="48">
       <h3>Soporte 24/7</h3>
-
-      <p>
-        Atención continua e inmediata a través de nuestro formulario de contacto.
-      </p>
+      <p>Atención continua e inmediata a través de nuestro formulario de contacto.</p>
     </div>
-
-
     <div class="beneficio-card">
-      <img
-        src="img/seguridad.png"
-        alt="Icono de candado de seguridad para pagos online"
-        width="48"
-      >
-
+      <img src="img/seguridad.png" alt="Icono de candado de seguridad para pagos online" width="48">
       <h3>Pagos Seguros</h3>
-
-      <p>
-        Transacciones cifradas y máxima protección para tus datos bancarios.
-      </p>
+      <p>Transacciones cifradas y máxima protección para tus datos bancarios.</p>
     </div>
-
   </div>
-
 </section>
-```
 
   </main>
 
   <footer id="site-footer">
-
-```
-<p>
-  &copy; 2026 NovaShop — Proyecto académico, Grupo 4.
-</p>
-
-<p>
-  <a href="nosotros.html">Sobre nosotros</a>
-  ·
-  <a href="contacto.html">Contacto</a>
-</p>
-```
-
+    <p>&copy; 2026 NovaShop — Proyecto académico, Grupo 4.</p>
+    <p><a href="nosotros.html">Sobre nosotros</a> · <a href="contacto.html">Contacto</a></p>
   </footer>
 
-  <!-- JavaScript de productos, buscador y filtro -->
-
+  <!-- Fase 2: JavaScript para el buscador/filtro de productos -->
   <script src="js/productos.js" defer></script>
-
 </body>
 </html>
-
