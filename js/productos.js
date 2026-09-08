@@ -8,7 +8,8 @@
  *
  * Componente dinámico de esta fase: buscador/filtro por categoría
  * y por nombre, aplicado sobre el arreglo `productos`.
- */ * Tarea 4 - Lógica de filtrado realizada por: Luisanna
+    * Tarea 4 - Lógica de filtrado realizada por: Luisanna
+    */
 
 // --- Variables y tipos de datos básicos ---
 const FILTRO_INICIAL = 'todas';        // string
