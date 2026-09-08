@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Formulario válido: respuesta dinámica en la misma página, sin recargar
     if (mensajeExito) {
       const primerNombre = datos.nombre.trim().split(' ')[0];
-      mensajeExito.textContent = '¡Gracias, ' + primerNombre + '! Recibimos tu mensaje y te contactaremos pronto.';
+      mensajeExito.textContent = '¡Gracias, ' + primerNombre + '! Un representante de nuestra compañia se comunicara contigo pronto!';
       mensajeExito.className = 'mensaje-exito';
     }
     formulario.reset();
