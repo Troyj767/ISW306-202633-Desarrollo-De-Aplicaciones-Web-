@@ -8,12 +8,17 @@
  *
  * Componente dinámico de esta fase: buscador/filtro por categoría
  * y por nombre, aplicado sobre el arreglo `productos`.
- */
+    * Tarea 4 - Lógica de filtrado realizada por: Luisanna
+    */
 
 // --- Variables y tipos de datos básicos ---
 const FILTRO_INICIAL = 'todas';        // string
 let categoriaActual = FILTRO_INICIAL;  // string — cambia cuando el usuario elige una categoría
 let terminoBusqueda = '';              // string — cambia cuando el usuario escribe en el buscador
+
+// Mensaje que muestra `renderizarProductos` cuando el filtro no encuentra nada.
+const MENSAJE_SIN_RESULTADOS =
+  '<p class="sin-resultados">No encontramos productos con ese filtro. Prueba con otra categoría o término de búsqueda.</p>';
 
 // Arreglo de objetos: un caso real del proyecto. Cada producto que se
 // muestra en la tienda vive aquí, en vez de estar escrito a mano en el HTML.
@@ -135,8 +140,7 @@ function renderizarProductos(listaProductos) {
   contenedor.innerHTML = '';
 
   if (listaProductos.length === 0) {
-    contenedor.innerHTML =
-      '<p class="sin-resultados">No encontramos productos con ese filtro. Prueba con otra categoría o término de búsqueda.</p>';
+    contenedor.innerHTML = MENSAJE_SIN_RESULTADOS;
     return 0;
   }
 

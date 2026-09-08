@@ -55,7 +55,7 @@ function validarFormularioContacto(datos) {
   if (!esCampoObligatorioValido(datos.email)) {
     errores.email = 'El correo es obligatorio.';
   } else if (!esEmailValido(datos.email)) {
-    errores.email = 'Escribe un correo válido, ej. nombre@correo.com';
+    errores.email = 'Ese correo no parece válido, revisa que tenga @ y un dominio.';
   }
 
   if (!esCampoObligatorioValido(datos.telefono)) {
@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Formulario válido: respuesta dinámica en la misma página, sin recargar
     if (mensajeExito) {
       const primerNombre = datos.nombre.trim().split(' ')[0];
-      mensajeExito.textContent = '¡Gracias, ' + primerNombre + '! Recibimos tu mensaje y te contactaremos pronto.';
+      mensajeExito.textContent = '¡Gracias, ' + primerNombre + '! Un representante de nuestra compañia se comunicara contigo pronto!';
       mensajeExito.className = 'mensaje-exito';
     }
     formulario.reset();
