@@ -142,12 +142,48 @@ document.addEventListener('DOMContentLoaded', function () {
       return;
     }
 
-    // Formulario válido: respuesta dinámica en la misma página, sin recargar
-    if (mensajeExito) {
-      const primerNombre = datos.nombre.trim().split(' ')[0];
-      mensajeExito.textContent = '¡Gracias, ' + primerNombre + '! Un representante de nuestra compañia se comunicara contigo pronto!';
-      mensajeExito.className = 'mensaje-exito';
-    }
-    formulario.reset();
+    // Fase 3: validación del cliente OK -> ahora sí se manda de verdad al
+    // servidor (api/contacto_guardar.php), que valida otra vez y guarda
+    // el mensaje en la base de datos. Seguimos sin recargar la página.
+    const boton = formulario.querySelector('button[type="submit"]');
+    if (boton) boton.disabled = true;
+
+    fetch('api/contacto_guardar.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(datos),
+    })
+      .then(function (respuesta) { return respuesta.json(); })
+      .then(function (resultadoServidor) {
+        if (!resultadoServidor.ok) {
+          if (resultadoServidor.errores) {
+            idsCampos.forEach(function (id) {
+              if (resultadoServidor.errores[id]) {
+                mostrarError(id, resultadoServidor.errores[id]);
+              }
+            });
+          }
+          if (mensajeExito) {
+            mensajeExito.textContent = resultadoServidor.error || 'No se pudo enviar el mensaje. Intenta de nuevo.';
+            mensajeExito.className = 'mensaje-error-login';
+          }
+          return;
+        }
+
+        if (mensajeExito) {
+          mensajeExito.textContent = resultadoServidor.mensaje;
+          mensajeExito.className = 'mensaje-exito';
+        }
+        formulario.reset();
+      })
+      .catch(function () {
+        if (mensajeExito) {
+          mensajeExito.textContent = 'No se pudo conectar con el servidor. Intenta de nuevo.';
+          mensajeExito.className = 'mensaje-error-login';
+        }
+      })
+      .finally(function () {
+        if (boton) boton.disabled = false;
+      });
   });
 });
