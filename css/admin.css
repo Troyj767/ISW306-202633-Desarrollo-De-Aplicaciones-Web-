@@ -6,6 +6,7 @@
   gap: 0.75rem;
   margin-left: auto;
   font-size: 0.9rem;
+  color: #fff; /* el encabezado es azul oscuro: sin esto el nombre casi no se ve */
 }
 
 .btn-logout {

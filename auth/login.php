@@ -22,6 +22,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $fila = $consulta->fetch();
 
         if ($fila && password_verify($clave, $fila['password_hash'])) {
+            // Nuevo ID de sesión al autenticarse: evita la fijación de sesión
+            session_regenerate_id(true);
+
             // Login correcto: guardamos SOLO lo necesario en la sesión (nunca el hash)
             $_SESSION['usuario'] = [
                 'id'     => $fila['id'],
