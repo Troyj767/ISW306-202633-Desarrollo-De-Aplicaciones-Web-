@@ -11,8 +11,8 @@
 $host    = 'localhost';
 $puerto  = '3306';
 $bd      = 'novashop_db';
-$usuario = 'root';
-$clave   = '';
+$usuario = 'novashop';
+$clave   = 'novashop_local_2026';
 $charset = 'utf8mb4';
 
 $dsn = "mysql:host=$host;port=$puerto;dbname=$bd;charset=$charset";
