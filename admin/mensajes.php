@@ -37,8 +37,13 @@ require __DIR__ . '/../includes/admin_header.php';
 
   <p><a href="mensaje_form.php" class="btn-primario">+ Nuevo mensaje</a></p>
 
-  <?php if (!$mensajes): ?>
-    <p class="sin-resultados">Todavía no hay mensajes de contacto guardados.</p>
+<?php if (!$mensajes): ?>
+  <div class="sin-resultados">
+    <h3>No hay mensajes todavía</h3>
+    <p>Cuando un cliente envíe un mensaje desde la página de contacto, aparecerá aquí.</p>
+    <a href="mensaje_form.php" class="btn-primario">+ Crear nuevo mensaje</a>
+  </div>
+<?php else: ?>
   <?php else: ?>
     <table class="tabla-admin">
       <thead>
