@@ -79,7 +79,7 @@ NovaShop/
 1. **Servidor local:** instala XAMPP (u otro de los mencionados) y arranca **Apache** y **MySQL** desde su panel de control.
 2. **Código:** clona (o copia) esta carpeta dentro de `htdocs` (XAMPP) o `www` (WampServer), por ejemplo `htdocs/novashop`.
 3. **Base de datos:** abre `http://localhost/phpmyadmin`, pestaña **SQL**, pega el contenido completo de [`db/novashop.sql`](db/novashop.sql) y ejecútalo. Esto crea la base `novashop_db`, sus 3 tablas y datos de ejemplo.
-4. **Configuración:** revisa `config/db.php` — por defecto usa el usuario `root` sin contraseña (el estándar de un XAMPP recién instalado). Si tu servidor local usa otro usuario/contraseña, ajústalo solo en tu máquina.
+4. **Configuración:** `config/db.php` usa por defecto el usuario `root` sin contraseña (el estándar de un XAMPP recién instalado), así que no hay que tocar nada. Si tu MySQL usa otro usuario/contraseña, **no edites `config/db.php`**: copia `config/db.local.example.php` como `config/db.local.php` y pon ahí tus datos. Ese archivo está en `.gitignore` y nunca se sube a GitHub.
 5. **Abrir el sitio:** entra a `http://localhost/novashop/index.php`.
 6. **Login del panel de administración:** `http://localhost/novashop/auth/login.php`
    - correo: `admin@novashop.com`
