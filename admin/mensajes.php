@@ -44,7 +44,7 @@ require __DIR__ . '/../includes/admin_header.php';
     <a href="mensaje_form.php" class="btn-primario">+ Crear nuevo mensaje</a>
   </div>
 <?php else: ?>
-  <?php else: ?>
+
     <table class="tabla-admin">
       <thead>
         <tr>
