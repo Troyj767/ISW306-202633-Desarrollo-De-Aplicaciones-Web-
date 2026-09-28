@@ -20,46 +20,12 @@ let terminoBusqueda = '';              // string — cambia cuando el usuario es
 const MENSAJE_SIN_RESULTADOS =
   '<p class="sin-resultados">No encontramos productos con ese filtro. Prueba con otra categoría o término de búsqueda.</p>';
 
-// Arreglo de objetos: un caso real del proyecto. Cada producto que se
-// muestra en la tienda vive aquí, en vez de estar escrito a mano en el HTML.
-const productos = [
-  {
-    id: 'audifonos',
-    nombre: 'Audífonos inalámbricos',
-    categoria: 'tecnologia',
-    descripcion: 'Sonido envolvente y batería de larga duración.',
-    precio: 2450,
-    oferta: '-20% oferta',
-    imagen: 'img/audifono.png',
-  },
-  {
-    id: 'smartwatch',
-    nombre: 'Smartwatch deportivo',
-    categoria: 'tecnologia',
-    descripcion: 'Monitoreo de actividad física y notificaciones.',
-    precio: 4200,
-    oferta: null,
-    imagen: 'img/smartwatch.png',
-  },
-  {
-    id: 'mochila',
-    nombre: 'Mochila para laptop',
-    categoria: 'movilidad',
-    descripcion: 'Resistente al agua, con compartimento acolchado.',
-    precio: 1850,
-    oferta: null,
-    imagen: 'img/mochila.png',
-  },
-  {
-    id: 'lampara',
-    nombre: 'Lámpara LED de escritorio',
-    categoria: 'hogar-oficina',
-    descripcion: 'Tres niveles de brillo, carga USB.',
-    precio: 980,
-    oferta: null,
-    imagen: 'img/lampara-led.png',
-  },
-];
+// Fase 3: los productos ya NO se escriben a mano aquí. index.php los trae
+// con una consulta real a la base de datos (tabla `productos`) y los deja
+// listos en `PRODUCTOS_DB` antes de cargar este archivo. Si por alguna
+// razón se abre esta página sin pasar por PHP, se usa un arreglo vacío
+// para que el filtro no truene.
+const productos = (typeof PRODUCTOS_DB !== 'undefined') ? PRODUCTOS_DB : [];
 
 /**
  * Da formato de moneda dominicana a un número (usa toLocaleString, función

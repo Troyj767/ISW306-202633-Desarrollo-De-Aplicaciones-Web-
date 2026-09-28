@@ -1,0 +1,178 @@
+/* NovaShop — Fase 3: estilos del panel de administración */
+
+.admin-usuario {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-left: auto;
+  font-size: 0.9rem;
+  color: #fff; /* el encabezado es azul oscuro: sin esto el nombre casi no se ve */
+}
+
+.btn-logout {
+  background: #e63946;
+  color: #fff;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  text-decoration: none;
+}
+
+.admin-main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3rem;
+}
+
+.admin-tarjetas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.admin-tarjeta {
+  background: #f1faee;
+  border: 1px solid #d8e6de;
+  border-radius: 10px;
+  padding: 1rem 1.5rem;
+  min-width: 160px;
+  text-align: center;
+}
+
+.admin-tarjeta strong {
+  display: block;
+  font-size: 1.8rem;
+  color: #1d3557;
+}
+
+.admin-tarjeta-alerta {
+  background: #fff3f3;
+  border-color: #f3c9c9;
+}
+
+.admin-tarjeta-alerta strong {
+  color: #e63946;
+}
+
+.tabla-admin {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  font-size: 0.92rem;
+}
+
+.tabla-admin th,
+.tabla-admin td {
+  border: 1px solid #e0e0e0;
+  padding: 0.6rem 0.7rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.tabla-admin thead {
+  background: #1d3557;
+  color: #fff;
+}
+
+.celda-mensaje {
+  max-width: 220px;
+}
+
+.celda-acciones {
+  white-space: nowrap;
+}
+
+.celda-acciones a {
+  margin-right: 0.6rem;
+}
+
+.form-inline {
+  display: inline;
+}
+
+.btn-eliminar {
+  background: #e63946;
+  color: #fff;
+  border: none;
+  padding: 0.3rem 0.7rem;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.btn-primario {
+  display: inline-block;
+  background: #457b9d;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  text-decoration: none;
+  margin: 0.5rem 0 1rem;
+}
+
+.btn-cancelar {
+  margin-left: 0.8rem;
+}
+
+.estado-pill {
+  display: inline-block;
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  text-transform: capitalize;
+}
+
+.estado-nuevo {
+background: #e0f0ff;
+color: #0a4a8f;
+}
+
+.estado-atendido {
+  background: #d4edda;
+  color: #1e6b30;
+}
+
+.mensaje-exito {
+  background: #d4edda;
+  color: #1e6b30;
+  padding: 0.6rem 0.9rem;
+  border-radius: 6px;
+  margin: 0.8rem 0;
+}
+
+.mensaje-error-login {
+  background: #fde2e2;
+  color: #9c1c1c;
+  padding: 0.6rem 0.9rem;
+  border-radius: 6px;
+  margin: 0.8rem 0;
+}
+
+/* Página de login */
+.pagina-login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: #f1faee;
+}
+
+.login-caja {
+  background: #fff;
+  border-radius: 12px;
+  padding: 2rem 2.5rem;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 360px;
+  text-align: center;
+}
+
+.login-logo {
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
+.login-ayuda {
+  font-size: 0.82rem;
+  color: #555;
+  margin-top: 1rem;
+}

@@ -1,3 +1,31 @@
+<?php
+/**
+ * NovaShop — Fase 3: index.php
+ * ---------------------------------------------------------------
+ * Antes (Fase 2) los productos vivían escritos a mano en js/productos.js.
+ * Ahora se traen con una consulta real a la base de datos y se le
+ * pasan a productos.js ya armados, para no tener que reescribir toda
+ * la lógica de filtro/búsqueda que ya funcionaba.
+ */
+require __DIR__ . '/config/db.php';
+
+$filasProductos = $pdo->query('SELECT slug, nombre, categoria, descripcion, precio, oferta, imagen FROM productos ORDER BY id')->fetchAll();
+
+// Se ajusta la forma para que quede idéntica al arreglo que productos.js ya sabía usar
+$productos = array_map(function ($fila) {
+    return [
+        'id'          => $fila['slug'],
+        'nombre'      => $fila['nombre'],
+        'categoria'   => $fila['categoria'],
+        'descripcion' => $fila['descripcion'],
+        'precio'      => (float) $fila['precio'],
+        'oferta'      => $fila['oferta'],
+        'imagen'      => $fila['imagen'],
+    ];
+}, $filasProductos);
+
+$usuario = function_exists('usuarioLogueado') ? usuarioLogueado() : null;
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -15,7 +43,7 @@
     </div>
     <nav>
       <ul class="nav-menu">
-        <li><a href="index.html" aria-current="page">Inicio</a></li>
+        <li><a href="index.php" aria-current="page">Inicio</a></li>
         <li><a href="nosotros.html">Sobre nosotros</a></li>
         <li><a href="contacto.html">Contacto</a></li>
       </ul>
@@ -36,7 +64,7 @@
     <section class="section" id="destacados">
       <h2 class="section-title">Productos destacados</h2>
 
-      <!-- Fase 2: buscador/filtro dinámico (js/productos.js dibuja las tarjetas aquí abajo) -->
+      <!-- Fase 3: los productos ahora vienen de la base de datos (ver PRODUCTOS_DB abajo) -->
       <div class="filtro-productos">
         <div>
           <label for="filtro-categoria">Categoría</label>
@@ -49,30 +77,13 @@
         </div>
         <div>
           <label for="filtro-busqueda">Buscar</label>
-          <input type="text" id="filtro-busqueda" placeholder="Ej. audífonos, lámpara..." aria-label="Buscar producto por nombre">
+          <input type="text" id="filtro-busqueda" placeholder="Ej. mochila, smartwatch..." aria-label="Buscar producto por nombre">
         </div>
         <p id="contador-resultados" aria-live="polite"></p>
       </div>
 
       <div class="product-grid" id="product-grid">
-        <!-- Tarjetas de ejemplo para que la maqueta se vea completa sin JavaScript.
-             js/productos.js las reemplaza por las tarjetas reales (y filtrables) al cargar la página. -->
-        <article class="product-card">
-          <img src="img/audifono.png" alt="Audífonos inalámbricos NovaShop">
-          <div class="info">
-            <h3>Audífonos inalámbricos</h3>
-            <p>Sonido envolvente y batería de larga duración.</p>
-            <p class="price">RD$ 2,450 <span style="color:#e63946; font-weight:700; margin-left:0.4rem;">-20% oferta</span></p>
-          </div>
-        </article>
-        <article class="product-card">
-          <img src="img/smartwatch.png" alt="Smartwatch NovaShop">
-          <div class="info">
-            <h3>Smartwatch deportivo</h3>
-            <p>Monitoreo de actividad física y notificaciones.</p>
-            <p class="price">RD$ 4,200</p>
-          </div>
-        </article>
+        <!-- js/productos.js dibuja aquí las tarjetas reales (y filtrables) al cargar la página -->
       </div>
     </section>
 
@@ -106,10 +117,13 @@
 
   <footer id="site-footer">
     <p>&copy; 2026 NovaShop — Proyecto académico, Grupo 4.</p>
-    <p><a href="nosotros.html">Sobre nosotros</a> · <a href="contacto.html">Contacto</a></p>
+    <p><a href="nosotros.html">Sobre nosotros</a> · <a href="contacto.html">Contacto</a> · <a href="admin/index.php">Acceso administrador</a></p>
   </footer>
 
-  <!-- Fase 2: JavaScript para el buscador/filtro de productos -->
+  <!-- Fase 3: productos traídos por PHP desde la base de datos -->
+  <script>
+    const PRODUCTOS_DB = <?php echo json_encode($productos, JSON_UNESCAPED_UNICODE); ?>;
+  </script>
   <script src="js/productos.js" defer></script>
 </body>
 </html>

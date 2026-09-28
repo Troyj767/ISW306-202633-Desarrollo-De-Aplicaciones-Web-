@@ -1,0 +1,2 @@
+# Credenciales locales de MySQL de cada integrante (ver config/db.local.example.php)
+config/db.local.php
