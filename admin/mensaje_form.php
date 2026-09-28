@@ -141,7 +141,7 @@ require __DIR__ . '/../includes/admin_header.php';
       </select>
     </div>
 
-    <button type="submit"><?php echo $esEdicion ? 'Guardar cambios' : 'Crear mensaje'; ?></button>
+    <button type="submit"><?php echo $esEdicion ? 'Guardar cambios' : 'Registrar mensaje'; ?></button>
     <a href="mensajes.php" class="btn-cancelar">Cancelar</a>
   </form>
 </section>
