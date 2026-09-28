@@ -61,7 +61,7 @@ function validarFormularioContacto(datos) {
   if (!esCampoObligatorioValido(datos.telefono)) {
     errores.telefono = 'El teléfono es obligatorio.';
   } else if (!esTelefonoValido(datos.telefono)) {
-    errores.telefono = 'Escribe un teléfono válido (solo números, espacios, + y -).';
+    errores.telefono = 'Ingresa un número de teléfono válido.';
   }
 
   if (!esCampoObligatorioValido(datos.producto)) {
