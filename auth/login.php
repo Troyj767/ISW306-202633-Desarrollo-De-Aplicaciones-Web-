@@ -59,13 +59,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <h1>Panel de administración</h1>
 
     <?php if ($error): ?>
-      <p class="mensaje-error-login"><?php echo htmlspecialchars($error); ?></p>
+      <p class="mensaje-error-login" role="alert"><?php echo htmlspecialchars($error); ?></p>
     <?php endif; ?>
 
     <form method="post" action="login.php" class="form-maquetado">
       <div>
         <label for="email">Correo</label>
-        <input type="email" id="email" name="email" required autofocus value="<?php echo htmlspecialchars($_POST['email'] ?? ''); ?>">
+        <input type="email" id="email" name="email" aria-label="Correo de administrador" required autofocus value="<?php echo htmlspecialchars($_POST['email'] ?? ''); ?>">
       </div>
       <div>
         <label for="password">Contraseña</label>
