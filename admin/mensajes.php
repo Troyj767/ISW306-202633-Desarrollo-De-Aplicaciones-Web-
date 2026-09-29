@@ -20,6 +20,7 @@ $mensajes = $pdo->query('
 require __DIR__ . '/../includes/admin_header.php';
 ?>
 
+<!-- Fase 3: CRUD de mensajes de contacto conectado a MySQL -->
 <section class="section">
   <h1>Mensajes de contacto</h1>
   <p>Estos son los mensajes que los clientes han enviado desde <code>contacto.html</code>. Entidad principal del CRUD de la Fase 3.</p>

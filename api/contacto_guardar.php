@@ -35,7 +35,7 @@ if ($email === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
     $errores['email'] = 'Escribe un correo válido.';
 }
 if ($telefono === '' || !preg_match('/^[\d()+\-\s]{7,20}$/', $telefono)) {
-    $errores['telefono'] = 'Por favor, ingresa un número de teléfono válido de 10 dígitos.';
+    $errores['telefono'] = 'Ingresa un número de teléfono válido.';
 }
 if ($producto === '') {
     $errores['producto'] = 'Selecciona un producto de interés.';
