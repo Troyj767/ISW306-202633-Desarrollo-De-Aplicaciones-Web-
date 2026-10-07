@@ -10,7 +10,6 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             UsuarioDemoSeeder::class,
-            // Tarea 6 (Carmen) agrega aquí ProductoSeeder y MensajeSeeder
-        ]);
-    }
-}
+           ProductoSeeder::class,
+MensajeSeeder::class,
+]);
