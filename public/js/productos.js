@@ -120,10 +120,16 @@ function renderizarProductos(listaProductos) {
 /**
  * Actualiza el texto que indica cuántos productos se están mostrando.
  * @param {number} cantidad
+ * @param {boolean} filtroActivo
  */
-function actualizarContador(cantidad) {
+function actualizarContador(cantidad, filtroActivo) {
   const contador = document.getElementById('contador-resultados');
   if (!contador) return;
+
+  if (!filtroActivo) {
+    contador.textContent = '';
+    return;
+  }
 
   contador.textContent = cantidad === 1 ? '1 producto encontrado' : cantidad + ' productos encontrados';
 }
@@ -135,7 +141,8 @@ function actualizarContador(cantidad) {
 function aplicarFiltro() {
   const resultado = filtrarProductos(productos, categoriaActual, terminoBusqueda);
   const cantidad = renderizarProductos(resultado);
-  actualizarContador(cantidad);
+  const filtroActivo = categoriaActual !== FILTRO_INICIAL || terminoBusqueda.trim() !== '';
+  actualizarContador(cantidad, filtroActivo);
 }
 
 // --- Conexión con el DOM: solo corre en páginas que tengan el grid de productos ---

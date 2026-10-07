@@ -150,6 +150,10 @@ main {
   border-radius: 0 0 12px 12px;
 }
 
+.hero-text h1 {
+  color: inherit;
+}
+
 .hero-text .btn {
   display: inline-block;
   margin-top: 0.8rem;
