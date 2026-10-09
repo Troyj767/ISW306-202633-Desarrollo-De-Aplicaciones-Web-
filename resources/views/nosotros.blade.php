@@ -1,63 +1,259 @@
 @extends('layouts.app')
 
+@section('titulo', 'Sobre nosotros')
+
+{{-- Método CSS interno (Fase 1): estilos propios de esta página --}}
+@push('styles')
+  <style>
+    .historia {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+  padding: 1.5rem;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+}
+
+.historia img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.valores-lista {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+}
+
+.valores-lista li {
+  background: #ffffff;
+  border-left: 4px solid var(--color-secundario);
+  padding: 1rem;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(29, 53, 87, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.valores-lista li:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 12px rgba(29, 53, 87, 0.2);
+}
+
+@media (max-width: 700px) {
+  .historia {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+
+  .valores-lista {
+    grid-template-columns: 1fr;
+  }
+}
+  </style>
+@endpush
+
 @section('content')
 
-<section class="section nosotros">
+    <!-- Historia de NovaShop -->
+    <section class="section historia">
+      <div>
+        <h1>Nuestra historia</h1>
 
-    <div class="nosotros-container">
+        <p>
+          NovaShop nació como proyecto académico del Grupo 4 con la idea
+          de crear una tienda en línea sencilla, accesible y con una
+          identidad visual clara. A lo largo del trimestre iremos
+          agregando funcionalidad real: interactividad con JavaScript,
+          conexión a una base de datos y despliegue con un framework.
+        </p>
+      </div>
 
-        <div class="nosotros-texto">
-            <h1>Sobre NovaShop</h1>
+      <img
+        src="{{ asset('img/sobre-nosotros.jpg') }}"
+        alt="Equipo de trabajo de NovaShop"
+      >
+    </section>
 
-            <p>
-                En <strong>NovaShop</strong> nos dedicamos a ofrecer productos
-                tecnológicos, accesorios y artículos de estilo para nuestros
-                clientes.
-            </p>
 
-            <p>
-                Nuestro objetivo es brindar una experiencia de compra sencilla,
-                rápida y segura, ofreciendo productos de calidad y una atención
-                cercana.
-            </p>
+    <!-- Valores de la empresa -->
+    <section class="section">
+      <h2 class="section-title">Nuestros valores</h2>
 
-            <p>
-                En NovaShop creemos que la tecnología debe estar al alcance de
-                todos, por eso trabajamos para ofrecer diferentes opciones que
-                se adapten a las necesidades de nuestros clientes.
-            </p>
-        </div>
+      <ul class="valores-lista">
+        <li>
+          <strong>Calidad</strong><br>
+          Productos seleccionados y verificados.
+        </li>
 
-        <div class="nosotros-info">
+        <li>
+          <strong>Cercanía</strong><br>
+          Atención directa a cada cliente.
+        </li>
 
-            <div class="info-card">
-                <h2>🚀 Nuestra misión</h2>
-                <p>
-                    Ofrecer productos tecnológicos y accesorios de calidad,
-                    acompañados de un servicio confiable y eficiente.
-                </p>
-            </div>
+        <li>
+          <strong>Transparencia</strong><br>
+          Precios claros, sin letra pequeña.
+        </li>
 
-            <div class="info-card">
-                <h2>💡 Nuestra visión</h2>
-                <p>
-                    Convertirnos en una tienda reconocida por la innovación,
-                    calidad y excelente atención al cliente.
-                </p>
-            </div>
+        <li>
+          <strong>Innovación</strong><br>
+          Mejoras constantes en cada fase del proyecto.
+        </li>
+      </ul>
+    </section>
 
-            <div class="info-card">
-                <h2>⭐ Nuestros valores</h2>
-                <p>
-                    Calidad, responsabilidad, innovación, confianza y
-                    compromiso con nuestros clientes.
-                </p>
-            </div>
 
-        </div>
+    <!-- Categorías de productos -->
+    <section class="section">
+      <h2 class="section-title">Categorías de productos</h2>
 
-    </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Categoría</th>
+            <th>Descripción</th>
+            <th>Ejemplos de productos</th>
+            <th>Dirigido a</th>
+          </tr>
+        </thead>
 
-</section>
+        <tbody>
 
+          <tr>
+            <td><strong>Tecnología</strong></td>
+            <td>
+              Productos tecnológicos y accesorios diseñados para
+              facilitar las actividades diarias y mejorar la
+              conectividad.
+            </td>
+            <td>
+              Audífonos, smartwatch, cargadores
+            </td>
+            <td>
+              Usuarios tecnológicos
+            </td>
+          </tr>
+
+          <tr>
+            <td><strong>Hogar y oficina</strong></td>
+            <td>
+              Artículos prácticos que ayudan a mantener espacios
+              cómodos, organizados y adecuados para estudiar o trabajar.
+            </td>
+            <td>
+              Lámparas LED, organizadores, soportes
+            </td>
+            <td>
+              Hogares y estudiantes
+            </td>
+          </tr>
+
+          <tr>
+            <td><strong>Movilidad</strong></td>
+            <td>
+              Productos pensados para transportar dispositivos y
+              objetos personales de manera cómoda y segura.
+            </td>
+            <td>
+              Mochilas, bolsos, fundas para laptop
+            </td>
+            <td>
+              Estudiantes y profesionales
+            </td>
+          </tr>
+
+          <tr>
+            <td><strong>Accesorios</strong></td>
+            <td>
+              Complementos que permiten mejorar, proteger o
+              personalizar diferentes dispositivos y productos.
+            </td>
+            <td>
+              Cables, adaptadores, soportes
+            </td>
+            <td>
+              Todo tipo de usuarios
+            </td>
+          </tr>
+
+          <tr>
+            <td><strong>Electrónica</strong></td>
+            <td>
+              Equipos electrónicos destinados al entretenimiento,
+              comunicación y uso práctico en el hogar.
+            </td>
+            <td>
+              Parlantes, cámaras, dispositivos USB
+            </td>
+            <td>
+              Hogares y usuarios tecnológicos
+            </td>
+          </tr>
+
+          <tr>
+            <td><strong>Gaming</strong></td>
+            <td>
+              Accesorios y dispositivos destinados a mejorar la
+              experiencia de los usuarios aficionados a los videojuegos.
+            </td>
+            <td>
+              Mouse, teclados, controles
+            </td>
+            <td>
+              Gamers
+            </td>
+          </tr>
+
+          <tr>
+            <td><strong>Ofertas</strong></td>
+            <td>
+              Selección de productos disponibles con promociones y
+              precios especiales para nuestros clientes.
+            </td>
+            <td>
+              Descuentos, promociones y combos
+            </td>
+            <td>
+              Todos los clientes
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+    </section>
+
+
+    <!-- Horario de atención -->
+    <section class="section">
+      <h2 class="section-title">Horario de atención</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Día</th>
+            <th>Horario</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>Lunes a viernes</td>
+            <td>8:00 a.m. – 6:00 p.m.</td>
+          </tr>
+
+          <tr>
+            <td>Sábados</td>
+            <td>9:00 a.m. – 2:00 p.m.</td>
+          </tr>
+
+          <tr>
+            <td>Domingos</td>
+            <td>Cerrado</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
 @endsection

@@ -1,109 +1,70 @@
 @extends('layouts.app')
 
+@section('titulo', 'Contacto')
+
 @section('content')
 
-<section class="section contacto">
+    <section class="section">
+      <h1>Contáctanos</h1>
+      <!-- Método CSS en línea: nota puntual resaltada -->
+      <p style="color:#e63946; font-weight:600;">Te respondemos en menos de 24 horas laborables.</p>
 
-    <div class="contacto-container">
-
-        <div class="contacto-info">
-
-            <h1>Contáctanos</h1>
-
-            <p>
-                ¿Tienes alguna pregunta, duda o necesitas más información?
-                Estamos aquí para ayudarte.
-            </p>
-
-            <div class="contacto-dato">
-                <h2>📍 Ubicación</h2>
-                <p>Santo Domingo, República Dominicana</p>
-            </div>
-
-            <div class="contacto-dato">
-                <h2>📧 Correo electrónico</h2>
-                <p>contacto@novashop.com</p>
-            </div>
-
-            <div class="contacto-dato">
-                <h2>📱 Teléfono</h2>
-                <p>+1 809-000-0000</p>
-            </div>
-
-            <div class="contacto-dato">
-                <h2>🕒 Horario</h2>
-                <p>Lunes a viernes: 8:00 AM - 6:00 PM</p>
-            </div>
-
+      <form class="form-maquetado" id="form-contacto" action="{{ route('contacto.store') }}" method="post" novalidate>
+        <div>
+          <label for="nombre">Nombre completo</label>
+          <input type="text" id="nombre" name="nombre" placeholder="Escribe tu nombre">
+          <span class="error-mensaje" id="error-nombre"></span>
         </div>
 
-        <div class="contacto-formulario">
-
-            <h2>Envíanos un mensaje</h2>
-
-            <form action="{{ route('contacto.store') }}" method="POST">
-    @csrf
-
-                <div class="form-group">
-                    <label for="nombre">Nombre</label>
-                    <input
-                        type="text"
-                        id="nombre"
-                        name="nombre"
-                        placeholder="Escribe tu nombre"
-                    >
-                </div>
-
-                <div class="form-group">
-                    <label for="correo">Correo electrónico</label>
-                    <input
-                        type="email"
-                        id="correo"
-                        name="correo"
-                        placeholder="ejemplo@correo.com"
-                    >
-                </div>
-
-                <div class="form-group">
-                    <label for="mensaje">Mensaje</label>
-                    <textarea
-                        id="mensaje"
-                        name="mensaje"
-                        rows="6"
-                        placeholder="Escribe tu mensaje"
-                    ></textarea>
-                </div>
-
-                <button type="submit">
-                    Enviar mensaje
-                </button>
-
-            </form>
-
+        <div>
+          <label for="email">Correo electrónico</label>
+          <input type="email" id="email" name="email" placeholder="tucorreo@ejemplo.com">
+          <span class="error-mensaje" id="error-email"></span>
         </div>
 
-    </div>
+        <div>
+          <label for="telefono">Teléfono</label>
+          <input type="tel" id="telefono" name="telefono" inputmode="numeric" placeholder="(809) 000-0000">
+          <span class="error-mensaje" id="error-telefono"></span>
+        </div>
 
-</section>
+        <div>
+          <label for="producto">Producto de interés</label>
+          <select id="producto" name="producto">
+            <option value="">Selecciona una opción</option>
+            <option value="audifonos">Audífonos inalámbricos</option>
+            <option value="smartwatch">Smartwatch deportivo</option>
+            <option value="mochila">Mochila para laptop</option>
+            <option value="lampara">Lámpara LED de escritorio</option>
+            <option value="otro">Otro</option>
+          </select>
+          <span class="error-mensaje" id="error-producto"></span>
+        </div>
 
+        <div>
+          <label for="mensaje">Mensaje</label>
+          <textarea id="mensaje" name="mensaje" rows="4" placeholder="Cuéntanos qué necesitas"></textarea>
+          <span class="error-mensaje" id="error-mensaje"></span>
+        </div>
+
+        <button type="submit">Enviar mensaje</button>
+        <p id="form-mensaje-exito" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Información de contacto</h2>
+      <table>
+        <tbody>
+          <tr><td>Correo</td><td>contacto@novashop.example</td></tr>
+          <tr><td>Teléfono</td><td>(809) 555-0100</td></tr>
+          <tr><td>Dirección</td><td>Santo Domingo, República Dominicana</td></tr>
+        </tbody>
+      </table>
+    </section>
 @endsection
-@push('styles')
-<style>
-    .contacto {
-        padding: 60px 20px;
-    }
 
-    .contacto-container {
-        max-width: 1100px;
-        margin: 0 auto;
-    }
-
-    .contacto-info h1 {
-        margin-bottom: 15px;
-    }
-
-    .contacto-dato {
-        margin-bottom: 20px;
-    }
-</style>
+@push('scripts')
+  {{-- Fase 2: validación en el navegador; Fase 4: envía a la ruta contacto.store --}}
+  <script src="{{ asset('js/validacion.js') }}" defer></script>
 @endpush
