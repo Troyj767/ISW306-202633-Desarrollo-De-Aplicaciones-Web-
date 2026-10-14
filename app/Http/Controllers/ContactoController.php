@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\GuardarContactoRequest;
+use App\Models\Mensaje;
 use Illuminate\Http\JsonResponse;
 use Illuminate\View\View;
 
@@ -12,9 +14,14 @@ class ContactoController extends Controller
         return view('contacto');
     }
 
-    // Tarea 3 (Luisanna) reemplaza este método por el guardado real
-    public function store(): JsonResponse
+    public function store(GuardarContactoRequest $request): JsonResponse
     {
-        return response()->json(['ok' => false, 'error' => 'Guardado pendiente (Tarea 3).'], 501);
+        $mensaje = Mensaje::create($request->validated());
+
+        return response()->json([
+            'ok' => true,
+            'mensaje' => 'Tu mensaje se ha guardado correctamente.',
+            'id' => $mensaje->id,
+        ]);
     }
 }
