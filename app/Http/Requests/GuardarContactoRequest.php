@@ -6,11 +6,12 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
+/** Validación del servidor del formulario de contacto (antes dentro de contacto_guardar.php). */
 class GuardarContactoRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return true;
+        return true; // formulario público
     }
 
     public function rules(): array
@@ -18,7 +19,7 @@ class GuardarContactoRequest extends FormRequest
         return [
             'nombre'   => ['required', 'string', 'max:150'],
             'email'    => ['required', 'email', 'max:150'],
-            'telefono' => ['required', 'regex:/^[\d()+ \-s]{7,20}$/'],
+            'telefono' => ['required', 'regex:/^[\d()+\-\s]{7,20}$/'],
             'producto' => ['required', 'string'],
             'mensaje'  => ['required', 'string', 'min:10'],
         ];
@@ -38,6 +39,7 @@ class GuardarContactoRequest extends FormRequest
         ];
     }
 
+    /** Responde con el mismo formato que ya entiende validacion.js: {ok:false, errores:{campo: "mensaje"}} */
     protected function failedValidation(Validator $validator): void
     {
         $errores = collect($validator->errors()->messages())->map(fn ($lista) => $lista[0]);
