@@ -1,0 +1,171 @@
+'use strict';
+
+/**
+ * NovaShop — Fase 2: productos.js
+ * ---------------------------------------------------------------
+ * Datos de los productos destacados y lógica para dibujarlos y
+ * filtrarlos en el DOM de index.html (sección "Productos destacados").
+ *
+ * Componente dinámico de esta fase: buscador/filtro por categoría
+ * y por nombre, aplicado sobre el arreglo `productos`.
+    * Tarea 4 - Lógica de filtrado realizada por: Luisanna
+    */
+
+// --- Variables y tipos de datos básicos ---
+const FILTRO_INICIAL = 'todas';        // string
+let categoriaActual = FILTRO_INICIAL;  // string — cambia cuando el usuario elige una categoría
+let terminoBusqueda = '';              // string — cambia cuando el usuario escribe en el buscador
+
+// Mensaje que muestra `renderizarProductos` cuando el filtro no encuentra nada.
+const MENSAJE_SIN_RESULTADOS =
+  '<p class="sin-resultados">No encontramos productos con ese filtro. Prueba con otra categoría o término de búsqueda.</p>';
+
+// Fase 3: los productos ya NO se escriben a mano aquí. index.php los trae
+// con una consulta real a la base de datos (tabla `productos`) y los deja
+// listos en `PRODUCTOS_DB` antes de cargar este archivo. Si por alguna
+// razón se abre esta página sin pasar por PHP, se usa un arreglo vacío
+// para que el filtro no truene.
+const productos = (typeof PRODUCTOS_DB !== 'undefined') ? PRODUCTOS_DB : [];
+
+/**
+ * Da formato de moneda dominicana a un número (usa toLocaleString, función
+ * predefinida del lenguaje).
+ * @param {number} monto
+ * @returns {string}
+ */
+function formatearPrecio(monto) {
+  return 'RD$ ' + monto.toLocaleString('es-DO');
+}
+
+/**
+ * Construye el elemento <article class="product-card"> de un producto.
+ * @param {Object} producto - uno de los objetos del arreglo `productos`
+ * @returns {HTMLElement}
+ */
+function crearTarjetaProducto(producto) {
+  const articulo = document.createElement('article');
+  articulo.className = 'product-card';
+
+  // Método CSS en línea (igual que en la Fase 1): resaltar la etiqueta de oferta
+  const ofertaHTML = producto.oferta
+    ? `<span style="color:#e63946; font-weight:700; margin-left:0.4rem;">${producto.oferta}</span>`
+    : '';
+
+  articulo.innerHTML = `
+    <img src="${producto.imagen}" alt="${producto.nombre} NovaShop">
+    <div class="info">
+      <h3>${producto.nombre}</h3>
+      <p>${producto.descripcion}</p>
+      <p class="price">${formatearPrecio(producto.precio)} ${ofertaHTML}</p>
+    </div>
+  `;
+
+  return articulo;
+}
+
+/**
+ * Filtra el arreglo de productos por categoría y por texto de búsqueda.
+ * @param {Array<Object>} listaProductos
+ * @param {string} categoria - 'todas' o el id de una categoría
+ * @param {string} busqueda - texto escrito por el usuario
+ * @returns {Array<Object>} nuevo arreglo con los productos que cumplen ambos filtros
+ */
+function filtrarProductos(listaProductos, categoria, busqueda) {
+  const textoBusqueda = normalizarTexto(busqueda);
+
+  return listaProductos.filter(function (producto) {
+    const coincideCategoria = categoria === 'todas' || producto.categoria === categoria;
+    const coincideBusqueda = normalizarTexto(producto.nombre).includes(textoBusqueda);
+    return coincideCategoria && coincideBusqueda;
+  });
+}
+
+/**
+ * Pasa un texto a minúsculas y le quita los acentos, para que la
+ * búsqueda encuentre "lampara" aunque el producto diga "lámpara".
+ * @param {string} texto
+ * @returns {string}
+ */
+function normalizarTexto(texto) {
+  return texto
+    .trim()
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[̀-ͯ]/g, '');
+}
+
+/**
+ * Vuelve a dibujar el grid de productos en el DOM.
+ * @param {Array<Object>} listaProductos - productos ya filtrados
+ * @returns {number} cantidad de productos dibujados
+ */
+function renderizarProductos(listaProductos) {
+  const contenedor = document.getElementById('product-grid');
+  if (!contenedor) return 0;
+
+  contenedor.innerHTML = '';
+
+  if (listaProductos.length === 0) {
+    contenedor.innerHTML = MENSAJE_SIN_RESULTADOS;
+    return 0;
+  }
+
+  listaProductos.forEach(function (producto) {
+    contenedor.appendChild(crearTarjetaProducto(producto));
+  });
+
+  return listaProductos.length;
+}
+
+/**
+ * Actualiza el texto que indica cuántos productos se están mostrando.
+ * @param {number} cantidad
+ * @param {boolean} filtroActivo
+ */
+function actualizarContador(cantidad, filtroActivo) {
+  const contador = document.getElementById('contador-resultados');
+  if (!contador) return;
+
+  if (!filtroActivo) {
+    contador.textContent = '';
+    return;
+  }
+
+  contador.textContent = cantidad === 1 ? '1 producto encontrado' : cantidad + ' productos encontrados';
+}
+
+/**
+ * Aplica el filtro actual (categoría + búsqueda) sobre `productos` y
+ * refresca la pantalla. Es la función que conecta todo lo demás.
+ */
+function aplicarFiltro() {
+  const resultado = filtrarProductos(productos, categoriaActual, terminoBusqueda);
+  const cantidad = renderizarProductos(resultado);
+  const filtroActivo = categoriaActual !== FILTRO_INICIAL || terminoBusqueda.trim() !== '';
+  actualizarContador(cantidad, filtroActivo);
+}
+
+// --- Conexión con el DOM: solo corre en páginas que tengan el grid de productos ---
+document.addEventListener('DOMContentLoaded', function () {
+  const contenedor = document.getElementById('product-grid');
+  if (!contenedor) return;
+
+  const selectCategoria = document.getElementById('filtro-categoria');
+  const inputBusqueda = document.getElementById('filtro-busqueda');
+
+  aplicarFiltro(); // primer dibujado, con todos los productos
+
+  if (selectCategoria) {
+    selectCategoria.addEventListener('change', function (evento) {
+      categoriaActual = evento.target.value;
+      aplicarFiltro();
+    });
+  }
+
+  if (inputBusqueda) {
+    inputBusqueda.addEventListener('input', function (evento) {
+      terminoBusqueda = evento.target.value;
+      aplicarFiltro();
+    });
+  }
+});
